@@ -14,3 +14,8 @@ All notable changes to this project will be documented in this file.
 
 - Updated the requirement for the `intl` package to allow any version above `0.17.0`.
 
+## [1.0.2] - 2023-11-07
+
+### Changed
+
+- Updated the requirement for the `cloud_firestore` package to allow '>=2.5.0 <5.0.0'.
