@@ -21,6 +21,7 @@ Future exportWithTitles(
   DateTime? start,
   DateTime? end,
   String dateFieldName,
+  String? defaultNullString,
 ) async {
   // Add your function code here!
 
@@ -61,7 +62,11 @@ Future exportWithTitles(
         values.add(formatFirestoreTimestamp(data[field]));
       } else {
         print("no Entra");
-        values.add(data[field]);
+        if (data[field] != null) {
+          values.add(data[field]);
+        } else {
+          values.add(defaultNullString ?? "");
+        }
       }
     }
 
@@ -74,5 +79,5 @@ Future exportWithTitles(
   final bytes = utf8.encode(csvData);
   final base64Data = base64Encode(bytes);
   final uri = 'data:text/csv;base64,$base64Data';
-  await launchUrl(uri as Uri);
+  await launchUrl(Uri.parse(uri));
 }

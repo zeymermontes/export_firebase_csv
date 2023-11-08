@@ -51,6 +51,8 @@ Follow these steps to use this library in your project:
 
 **dateFieldName** (String): The name of the field that contains date information.
 
+**defaultNullString** (String?): The default value you want in case of a null value. (Defautl value "")
+
 # Caution: Be Mindful of Date Filters
 Please be cautious when using date filters. If you don't specify **start** and **end** dates, the library will export the entire collection. Exporting a large collection can result in additional Firebase usage costs.
 
@@ -118,6 +120,8 @@ Sigue estos pasos para utilizar esta biblioteca en tu proyecto:
 **end** (DateTime?): La fecha de fin para filtrar los datos.(Opcional)
 
 **dateFieldName** (String): El nombre del campo que contiene información de fecha.
+
+**defaultNullString** (String?): El valor por defecto en caso de recibir un valor null. (valor por defecto "")
 
 ## Precaución: Ten en Cuenta los Filtros de Fecha
 Por favor, ten precaución al utilizar los filtros de fecha. Si no especificas las fechas de **start** y **end**, la biblioteca exportará toda la colección. Exportar una colección grande puede resultar en costos adicionales de uso en Firebase.

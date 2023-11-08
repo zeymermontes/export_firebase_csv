@@ -25,3 +25,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Updated the requirement for the `url_launcher` package to allow `>=6.0.13 <=6.2.1` and `csv` package to allow ``>=5.0.4 <=5.1.1'`.
+
+## [1.0.4] - 2023-11-08
+
+### Changed
+
+- Updated the launch to launchURL and uri method. Also there is a new parameter on `exportWithTitles` called `defaultNullString`.
