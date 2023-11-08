@@ -45,9 +45,9 @@ Follow these steps to use this library in your project:
 
 **fieldNames** (List<String>): A list of field names that correspond to the data you want to export.
 
-**start** (DateTime): The start date for filtering data.
+**start** (DateTime?): The start date for filtering data. (Optional)
 
-**end** (DateTime): The end date for filtering data.
+**end** (DateTime?): The end date for filtering data. (Optional)
 
 **dateFieldName** (String): The name of the field that contains date information.
 
@@ -113,9 +113,9 @@ Sigue estos pasos para utilizar esta biblioteca en tu proyecto:
 
 **fieldNames** (List<String>): Una lista de nombres de campos que corresponden a los datos que deseas exportar.
 
-**start** (DateTime): La fecha de inicio para filtrar los datos.
+**start** (DateTime?): La fecha de inicio para filtrar los datos. (Opcional)
 
-**end** (DateTime): La fecha de fin para filtrar los datos.
+**end** (DateTime?): La fecha de fin para filtrar los datos.(Opcional)
 
 **dateFieldName** (String): El nombre del campo que contiene información de fecha.
 
