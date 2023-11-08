@@ -52,7 +52,7 @@ Future exportWithTitles(
   List<dynamic> values = [];
   rows.add(rowTitles); // Add header row
   for (final document in documents) {
-    final id = document.id;
+    //final id = document.id;
     final data = document.data() as Map<String, dynamic>;
     for (var field in fieldNames) {
       if (data[field] is Timestamp) {
@@ -74,5 +74,5 @@ Future exportWithTitles(
   final bytes = utf8.encode(csvData);
   final base64Data = base64Encode(bytes);
   final uri = 'data:text/csv;base64,$base64Data';
-  await launch(uri);
+  await launchUrl(uri as Uri);
 }
