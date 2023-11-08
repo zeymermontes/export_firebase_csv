@@ -1,0 +1,14 @@
+name: export_firebase_csv
+description: Una librería Flutter que realiza exportación a CSV desde Firestore.
+version: 1.0.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cloud_firestore: ^2.5.0
+  csv: ^5.0.4
+  url_launcher: ^6.0.13
+  intl: ^0.17.0
+
+environment:
+  sdk: ">=2.12.0 <4.0.0"
