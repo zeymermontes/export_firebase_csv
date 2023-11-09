@@ -47,3 +47,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Fixed Read me at parameters.
+
+## [1.0.7] - 2023-11-08
+
+### Changed
+
+- Fixed misplaced example.

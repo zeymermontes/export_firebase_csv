@@ -1,7 +1,7 @@
 name: export_firebase_csv
 homepage: https://github.com/zeymermontes/export_firebase_csv
 description: Una librería Flutter que realiza exportación a CSV desde Firestore.
-version: 1.0.6
+version: 1.0.7
 
 dependencies:
   flutter:

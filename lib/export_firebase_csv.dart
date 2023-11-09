@@ -72,7 +72,7 @@ Future exportWithTitles(
     values = [];
   }
 // Generate a formatted timestamp for the filename
-  final creationTime = DateFormat('dd_MM_yyyy_HHmmss').format(DateTime.now());
+  final creationTime = DateFormat('dd_MM_yyyy_HH:mm:ss').format(DateTime.now());
   
   // Convert the CSV string to a list of bytes (Uint8List)
   Uint8List csvBytes = Uint8List.fromList(dataString.codeUnits);
@@ -106,7 +106,7 @@ Future jsonToCsv(
   }
 
  // Generate a formatted timestamp for the filename
-  final creationTime = DateFormat('dd_MM_yyyy_HHmmss').format(DateTime.now());
+  final creationTime = DateFormat('dd_MM_yyyy_HH:mm:ss').format(DateTime.now());
   // Convert the CSV string to a list of bytes (Uint8List)
   Uint8List csvBytes = Uint8List.fromList(dataString.codeUnits);
   // Convert the Uint8List to a Stream<int>

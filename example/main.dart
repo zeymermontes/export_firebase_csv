@@ -23,6 +23,8 @@ void exportDataFromFirebase() async {
     startDate,
     endDate,
     dateFieldName,
+    "-",
+    "report"
   );
 }
 
