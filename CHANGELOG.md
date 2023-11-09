@@ -31,3 +31,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Updated the launch to launchURL and uri method. Also there is a new parameter on `exportWithTitles` called `defaultNullString`.
+
+## [1.0.5] - 2023-11-08
+
+### Changed
+
+- Got rid of CSV Package and changed to Download.
+
+### Added 
+
+- Created new function `jsonToCsv`  that returns a csv from a JSON.

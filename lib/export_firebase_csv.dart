@@ -1,8 +1,8 @@
+import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:csv/csv.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:convert';
+import 'package:download/download.dart';
 import 'package:intl/intl.dart';
+import 'dart:convert';
 
 String formatFirestoreTimestamp(Timestamp timestamp) {
   // Convierte el Timestamp en un objeto DateTime
@@ -22,9 +22,9 @@ Future exportWithTitles(
   DateTime? end,
   String dateFieldName,
   String? defaultNullString,
+  String fileName,
 ) async {
-  // Add your function code here!
-
+  String dataString = '';
   if (start == null) {
     start = DateTime.now().subtract(Duration(
         hours: DateTime.now().hour,
@@ -47,37 +47,72 @@ Future exportWithTitles(
       .where(dateFieldName, isLessThanOrEqualTo: end)
       .get();
   final List<QueryDocumentSnapshot> documents = querySnapshot.docs;
+  print(documents.length);
 
 // Convert the data into CSV format
   final List<List<dynamic>> rows = [];
   List<dynamic> values = [];
-  rows.add(rowTitles); // Add header row
+  //rows.add(rowTitles); // Add header row
+  dataString = rowTitles.join(",") + "\n";
+
   for (final document in documents) {
-    //final id = document.id;
     final data = document.data() as Map<String, dynamic>;
     for (var field in fieldNames) {
       if (data[field] is Timestamp) {
-        print("Entra");
-
-        values.add(formatFirestoreTimestamp(data[field]));
+        values.add(formatFirestoreTimestamp(data[field]).toString());
       } else {
-        print("no Entra");
+        
         if (data[field] != null) {
-          values.add(data[field]);
+          values.add(data[field].toString());
         } else {
           values.add(defaultNullString ?? "");
         }
       }
     }
-
-    rows.add(values);
+    
+    dataString += values.join(",") + "\n";
     values = [];
   }
-  final csvData = const ListToCsvConverter().convert(rows);
+// Generate a formatted timestamp for the filename
+  final creationTime = DateFormat('dd_MM_yyyy_HHmmss').format(DateTime.now());
+  
+  // Convert the CSV string to a list of bytes (Uint8List)
+  Uint8List csvBytes = Uint8List.fromList(dataString.codeUnits);
+  // Convert the Uint8List to a Stream<int>
+  Stream<int> csvStream = Stream.fromIterable(csvBytes.map((byte) => byte));
+  await download(csvStream, '${fileName}-${creationTime}.csv');
+}
 
-// Download the CSV file
-  final bytes = utf8.encode(csvData);
-  final base64Data = base64Encode(bytes);
-  final uri = 'data:text/csv;base64,$base64Data';
-  await launchUrl(Uri.parse(uri));
+
+Future jsonToCsv(
+  String jsonString,
+  String fileName,
+  ) async {
+  // convert from json to csv and download it, without using csv library
+  List<Map<String, dynamic>> jsonList =
+      jsonDecode(jsonString).cast<Map<String, dynamic>>();
+
+  // Extract the headers from the first object
+  List<String> headers = jsonList[0].keys.toList();
+
+  // Create a string to hold the CSV data
+  String dataString = headers.join(",") + "\n";
+
+  // Loop through the objects and add their values to the CSV string
+  for (Map<String, dynamic> json in jsonList) {
+    List<String> values = [];
+    for (String header in headers) {
+      values.add(json[header].toString());
+    }
+    dataString += values.join(",") + "\n";
+  }
+
+ // Generate a formatted timestamp for the filename
+  final creationTime = DateFormat('dd_MM_yyyy_HHmmss').format(DateTime.now());
+  // Convert the CSV string to a list of bytes (Uint8List)
+  Uint8List csvBytes = Uint8List.fromList(dataString.codeUnits);
+  // Convert the Uint8List to a Stream<int>
+  Stream<int> csvStream = Stream.fromIterable(csvBytes.map((byte) => byte));
+  await download(csvStream, '${fileName}-${creationTime}.csv');
+  //Special thanks to Zakaria Aichaoui 
 }
