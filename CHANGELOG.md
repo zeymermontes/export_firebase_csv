@@ -41,3 +41,9 @@ All notable changes to this project will be documented in this file.
 ### Added 
 
 - Created new function `jsonToCsv`  that returns a csv from a JSON.
+
+## [1.0.6] - 2023-11-08
+
+### Changed
+
+- Fixed Read me at parameters.
