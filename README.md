@@ -68,7 +68,7 @@ Follow these steps to use this library in your project:
 ### jsonToCsv Function
 **Parameters:**
 
-- **jsonString** (String): JSON data to convert to CSV.
+- **jsonData** (dynamic): JSON data to convert to CSV.
 - **fileName** (String): The name of the output CSV file.
 
 # Caution: Be Mindful of Date Filters
@@ -154,7 +154,7 @@ Sigue estos pasos para utilizar esta biblioteca en tu proyecto:
 ### Función jsonToCsv
 **Parámetros:**
 
-- **jsonString** (String): Datos JSON a convertir a CSV.
+- **jsonData** (dynamic): Datos JSON a convertir a CSV.
 - **fileName** (String): El nombre del archivo CSV de salida.
 
 # Precaución: Ten en Cuenta los Filtros de Fecha

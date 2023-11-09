@@ -53,3 +53,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Fixed misplaced example.
+
+## [1.0.8] - 2023-11-08
+
+### Changed
+
+- Changed jsonToCsv to accept dynamic jsonData.

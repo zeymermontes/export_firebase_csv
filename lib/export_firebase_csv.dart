@@ -83,12 +83,29 @@ Future exportWithTitles(
 
 
 Future jsonToCsv(
-  String jsonString,
+  dynamic jsonData,
   String fileName,
-  ) async {
-  // convert from json to csv and download it, without using csv library
-  List<Map<String, dynamic>> jsonList =
-      jsonDecode(jsonString).cast<Map<String, dynamic>>();
+) async {
+  if (jsonData is String) {
+    jsonData = jsonDecode(jsonData);
+  } else if (jsonData is! Map<String, dynamic> &&
+      jsonData is! List<Map<String, dynamic>>) {
+    throw ArgumentError(
+        'Invalid JSON data. It should be a JSON string, Map, or List of Maps.');
+  }
+
+  List<Map<String, dynamic>> jsonList;
+
+  if (jsonData is Map<String, dynamic>) {
+    // If jsonData is a single JSON object, wrap it in a list
+    jsonList = [jsonData];
+  } else {
+    jsonList = jsonData as List<Map<String, dynamic>>;
+  }
+
+  if (jsonList.isEmpty) {
+    throw ArgumentError('JSON data is empty.');
+  }
 
   // Extract the headers from the first object
   List<String> headers = jsonList[0].keys.toList();
@@ -100,17 +117,17 @@ Future jsonToCsv(
   for (Map<String, dynamic> json in jsonList) {
     List<String> values = [];
     for (String header in headers) {
-      values.add(json[header].toString());
+      values.add(json[header].toString().replaceAll(',', ';'));
     }
     dataString += values.join(",") + "\n";
   }
 
- // Generate a formatted timestamp for the filename
+  // Generate a formatted timestamp for the filename
   final creationTime = DateFormat('dd_MM_yyyy_HH:mm:ss').format(DateTime.now());
   // Convert the CSV string to a list of bytes (Uint8List)
   Uint8List csvBytes = Uint8List.fromList(dataString.codeUnits);
   // Convert the Uint8List to a Stream<int>
   Stream<int> csvStream = Stream.fromIterable(csvBytes.map((byte) => byte));
   await download(csvStream, '$fileName-$creationTime.csv');
-  //Special thanks to Zakaria Aichaoui 
+  // Special thanks to Zakaria Aichaoui
 }
