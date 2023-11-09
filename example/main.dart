@@ -16,20 +16,13 @@ void exportDataFromFirebase() async {
   DateTime endDate = DateTime(2023, 1, 31);
   String dateFieldName = 'hireDate';
 
-  await exportWithTitles(
-    collectionName,
-    rowTitles,
-    fieldNames,
-    startDate,
-    endDate,
-    dateFieldName,
-    "-",
-    "report"
-  );
+  await exportWithTitles(collectionName, rowTitles, fieldNames, startDate,
+      endDate, dateFieldName, "-", "report");
 }
 
 void convertJsonToCsv() {
-  String jsonString = '[{"name": "Alice", "age": 30, "city": "New York"}, {"name": "Bob", "age": 25, "city": "Los Angeles"}]';
+  String jsonString =
+      '[{"name": "Alice", "age": 30, "city": "New York"}, {"name": "Bob", "age": 25, "city": "Los Angeles"}]';
   String fileName = 'data';
 
   jsonToCsv(jsonString, fileName);

@@ -59,3 +59,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Changed jsonToCsv to accept dynamic jsonData.
+
+## [1.0.9] - 2023-11-08
+
+### Added
+
+- Better Documentation on the code.
