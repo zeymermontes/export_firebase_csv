@@ -50,9 +50,7 @@ Future exportWithTitles(
   print(documents.length);
 
 // Convert the data into CSV format
-  final List<List<dynamic>> rows = [];
   List<dynamic> values = [];
-  //rows.add(rowTitles); // Add header row
   dataString = rowTitles.join(",") + "\n";
 
   for (final document in documents) {
@@ -80,7 +78,7 @@ Future exportWithTitles(
   Uint8List csvBytes = Uint8List.fromList(dataString.codeUnits);
   // Convert the Uint8List to a Stream<int>
   Stream<int> csvStream = Stream.fromIterable(csvBytes.map((byte) => byte));
-  await download(csvStream, '${fileName}-${creationTime}.csv');
+  await download(csvStream, '$fileName-$creationTime.csv');
 }
 
 
@@ -113,6 +111,6 @@ Future jsonToCsv(
   Uint8List csvBytes = Uint8List.fromList(dataString.codeUnits);
   // Convert the Uint8List to a Stream<int>
   Stream<int> csvStream = Stream.fromIterable(csvBytes.map((byte) => byte));
-  await download(csvStream, '${fileName}-${creationTime}.csv');
+  await download(csvStream, '$fileName-$creationTime.csv');
   //Special thanks to Zakaria Aichaoui 
 }
