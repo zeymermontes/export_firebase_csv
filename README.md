@@ -58,8 +58,8 @@ Follow these steps to use this library in your project:
 **Parameters:**
 
 - **collectionName** (String): The name of the Firebase collection from which you want to export data.
-- **rowTitles** (List<String>): A list of titles to be used as column headers in the CSV file.
-- **fieldNames** (List<String>): A list of field names that correspond to the data you want to export.
+- **rowTitles** (List  String  ): A list of titles to be used as column headers in the CSV file.
+- **fieldNames** (List  String ): A list of field names that correspond to the data you want to export.
 - **start** (DateTime?): The start date for filtering data. (Optional)
 - **end** (DateTime?): The end date for filtering data. (Optional)
 - **dateFieldName** (String): The name of the field that contains date information.
@@ -144,8 +144,8 @@ Sigue estos pasos para utilizar esta biblioteca en tu proyecto:
 **Parámetros:**
 
 - **collectionName** (String): El nombre de la colección de Firebase de la que deseas exportar datos.
-- **rowTitles** (List<String>): Una lista de títulos que se utilizarán como encabezados de columna en el archivo CSV.
-- **fieldNames** (List<String>): Una lista de nombres de campos que corresponden a los datos que deseas exportar.
+- **rowTitles** (List  String ): Una lista de títulos que se utilizarán como encabezados de columna en el archivo CSV.
+- **fieldNames** (List  String ): Una lista de nombres de campos que corresponden a los datos que deseas exportar.
 - **start** (DateTime?): La fecha de inicio para filtrar los datos. (Opcional)
 - **end** (DateTime?): La fecha de fin para filtrar los datos. (Opcional)
 - **dateFieldName** (String): El nombre del campo que contiene información de fecha.
